@@ -1,9 +1,11 @@
+import { InputContainer } from "./style";
+
 
 const Input = () => {
     return (
-      <div className="App">
-       ola
-      </div>
+      <InputContainer>
+        <input/>
+      </InputContainer>
     );
   }
   
