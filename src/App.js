@@ -8,14 +8,46 @@ import { useState } from "react";
 const App = () => {
 
   const [currentNumber, setCurrentNumber] = useState('0');
+  const [firstNumber,setFirstNumber] = useState('0');
+  const [operation , setOperation] = useState('')
+
+
 
   const handleOnClear = () => {
     setCurrentNumber('0')
+    setFirstNumber('0');
+    setOperation('')
   }
 
   const handleAddNumber = (num) => {
-    setCurrentNumber(prev => `${num} ${prev === '0' ? '' :prev} `)
+    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`)
+   
   }
+
+  const handleSumNumbers = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0')
+      setOperation('+')
+    }else{
+      const sum = Number(firstNumber) + Number(currentNumber);
+      setCurrentNumber(String(sum));
+      setOperation('')
+    }
+  }
+
+  
+  const handleEquals = () => {
+    if(firstNumber || '0' && operation || '' && currentNumber || '0'){
+      switch(operation){
+        case '+':
+          handleSumNumbers();
+        break;
+        default:
+          break;
+      }
+  }
+}
 
   return (
     <Container>
@@ -40,13 +72,13 @@ const App = () => {
            <Buttons label={'4'}  onClick={() => handleAddNumber ('4')}/>
            <Buttons label={'5'}  onClick={() => handleAddNumber ('5')}/>
            <Buttons label={'6'}  onClick={() => handleAddNumber ('6')}/>
-           <Buttons label={'+'}  onClick={() => handleAddNumber ('+')}/>
+           <Buttons label={'+'}  onClick={handleSumNumbers}/>
          </Row>
          <Row>
            <Buttons label={'1'}  onClick={() => handleAddNumber ('1')}/>
            <Buttons label={'2'}  onClick={() => handleAddNumber ('2')}/>
            <Buttons label={'3'}  onClick={() => handleAddNumber ('3')}/>
-           <Buttons label={'='}  onClick={() => handleAddNumber ('=')}/>
+           <Buttons label={'='}  onClick={handleEquals}/>
          </Row>
 
       </Content>
