@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const InputContainer =styled.div`
     width:100%;
     height:75px;
-    background:#aaffaa;
+    
 
     display:flex;
     align-items:center;
@@ -11,6 +11,7 @@ export const InputContainer =styled.div`
 
     font-size:24px;
     font-family:'Roboto';
+    margin:45px 0 20px 0;
    
 
     input{
@@ -18,11 +19,10 @@ export const InputContainer =styled.div`
         height:75px;
         background:#aaffaa;
         border:0;
-        display:flex;
-        flex-direction:column;
-        align-items:flex-end;
-         padding:0 10px;
-
+        display:block;
+        margin:0 auto;
+        padding:0 10px;
+        border-radius:8px;
         font-size:24px;
         font-family:'Roboto';
     }
