@@ -1,10 +1,15 @@
-import { Container } from "./style";
+
+import Input from "./components/Input";
+import Buttons from "./components/Buttons copy";
+import { Container,Content } from "./style";
 
 
 const App = () => {
   return (
     <Container>
-     ola
+      <Content>
+         oi
+      </Content>
     </Container>
   );
 }
