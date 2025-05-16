@@ -14,6 +14,7 @@ export const Container = styled.div`
 export const Content = styled.div`
     background-color:#403f3c;
     width:60%;
+    max-width:400px;
     border-radius:25px;
     padding:0 30px 30px 30px;
 `

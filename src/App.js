@@ -48,6 +48,30 @@ const App = () => {
     }
   }
 
+  const handleMultNumbers = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0')
+      setOperation('x')
+    }else{
+      const rem = Number(firstNumber) * Number(currentNumber);
+      setCurrentNumber(String(rem));
+      setOperation('')
+    }
+  }
+
+  const handleDivNumbers = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0')
+      setOperation('/')
+    }else{
+      const rem = Number(firstNumber) / Number(currentNumber);
+      setCurrentNumber(String(rem));
+      setOperation('')
+    }
+  }
+
   
   const handleEquals = () => {
     if(firstNumber || '0' && operation || '' && currentNumber || '0'){
@@ -58,11 +82,18 @@ const App = () => {
         case '-':
           handleRemNumbers();
         break;
+        case 'x':
+          handleMultNumbers();
+        break;
+        case '/':
+          handleDivNumbers();
+        break;
         default:
           break;
       }
   }
 }
+
 
   return (
     <Container>
@@ -71,9 +102,9 @@ const App = () => {
 
          <Row>
            <Buttons label={'0'}  onClick={() => handleAddNumber ('0')}/>
-           <Buttons label={'C'}  onClick={handleOnClear}/>
-           <Buttons label={'X'}  onClick={() => handleAddNumber ('X')}/>
-           <Buttons label={'/'}  onClick={() => handleAddNumber ('/')}/>
+           <Buttons label={'c'}  onClick={handleOnClear}/>
+           <Buttons label={'X'}  onClick={handleMultNumbers}/>
+           <Buttons label={'/'}  onClick={handleDivNumbers}/>
          </Row>
 
          <Row>
