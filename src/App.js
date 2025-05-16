@@ -36,12 +36,27 @@ const App = () => {
     }
   }
 
+  const handleRemNumbers = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0')
+      setOperation('-')
+    }else{
+      const rem = Number(firstNumber) - Number(currentNumber);
+      setCurrentNumber(String(rem));
+      setOperation('')
+    }
+  }
+
   
   const handleEquals = () => {
     if(firstNumber || '0' && operation || '' && currentNumber || '0'){
       switch(operation){
         case '+':
           handleSumNumbers();
+        break;
+        case '-':
+          handleRemNumbers();
         break;
         default:
           break;
@@ -65,7 +80,7 @@ const App = () => {
            <Buttons label={'7'}  onClick={() => handleAddNumber ('7')}/>
            <Buttons label={'8'}  onClick={() => handleAddNumber ('8')}/>
            <Buttons label={'9'}  onClick={() => handleAddNumber ('9')}/>
-           <Buttons label={'-'}  onClick={() => handleAddNumber ('-')}/>
+           <Buttons label={'-'}  onClick={ handleRemNumbers}/>
          </Row>
          
          <Row>
